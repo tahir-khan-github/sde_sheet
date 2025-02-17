@@ -79,9 +79,9 @@ T.C-> o(N)
         System.out.print(ans + " "); // printing 1st element
 
         // Printing the rest of the part:
-        for (int i = 1; i < n; i++) {
-            ans = ans * (n - i);
-            ans = ans / i;
+        for (int col = 1; col < n; i++) {
+            ans = ans * (n - col);
+            ans = ans / col;
             System.out.print(ans + " ");
         }
         System.out.println();

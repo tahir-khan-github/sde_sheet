@@ -37,6 +37,7 @@ T.C -> (NlogN), S-> (N)
 
 /**
  Optimal-> use Dutch National Flag algo
+ T.C -> o(N)
  */
 
  {

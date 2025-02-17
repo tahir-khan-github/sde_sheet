@@ -92,8 +92,7 @@ class Solution {
             for(int j = 0 ; j < matrix[0].length ; j++){
                 if(matrix[i][j] == 0){
                     matrix[i][0] = 0; //row marking
-                    //col marking
-                  if(j != 0){
+                  if(j != 0){ //col marking
                       matrix[0][j] = 0;
                   }else{
                     col0 = 0;
@@ -109,13 +108,13 @@ class Solution {
                 }
             }
            }
-          if(matrix[0][0] == 0){
+          if(matrix[0][0] == 0){ //marked col marking
                 for(int j = 0 ; j < matrix[0].length; j++){
                     matrix[0][j] = 0;
                 }
             }
 
-            if(col0 == 0){
+            if(col0 == 0){ //marked row marking
                 for(int i = 0 ; i < matrix.length; i++){
                     matrix[i][0] = 0;
                 }
