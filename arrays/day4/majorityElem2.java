@@ -54,19 +54,35 @@ T.C -> o(2n)
 s -> o(n)
  */
 
-{
+class Solution {
     public List<Integer> majorityElement(int[] nums) {
         int n = nums.length;
-        List<Integer> list = new ArrayList<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        int el1 = 0, el2 =0, cnt1=0, cnt2=0;
 
         for(int i = 0 ; i < n ; i++){
-            int val = map.getOrDefault(nums[i],0);
-            map.put(nums[i], val + 1);
+           if(cnt1 == 0 && el2 != nums[i]){
+            el1 = nums[i];
+            cnt1 = 1;
+           }else if(cnt2 == 0 && el1 != nums[i]){
+            el2 = nums[i];
+            cnt2 = 1;
+           }else if(el1 == nums[i]){
+            cnt1++;
+           }else if(el2 == nums[i]){
+            cnt2++;
+           }else{
+            cnt1--;
+            cnt2--;
+           }
         }
-        for(Map.Entry<Integer, Integer> set: map.entrySet()){
-            if(set.getValue() > n/3) list.add(set.getKey());
+        int elCnt1 = 0, elCnt2 = 0;
+        for(int i= 0; i< n; i++){
+            if(el1 == nums[i]) elCnt1++;
+            if(el2 == nums[i]) elCnt2++;
         }
+        if(elCnt1 > n/3) list.add(el1); 
+        if(elCnt2 > n/3) list.add(el2); 
 
         return list;
     }

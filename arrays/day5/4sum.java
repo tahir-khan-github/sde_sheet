@@ -75,7 +75,7 @@ class Solution {
 
 /*
 optimal: using 2 pointer and skipping duplicate
-T.C -> o(n^3) + nlogn
+T.C -> o(n^3) 
 S -> 2 * (number of quads)
  */
 
