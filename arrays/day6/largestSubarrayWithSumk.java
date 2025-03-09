@@ -5,27 +5,18 @@ S -> o(1)
  */
  {
     public int longestConsecutive(int[] nums) {
-        if(nums.length == 0) return 0;
-        int n = nums.length;
-        int longest = 1;
-        Set<Integer> set = new HashSet<>();
-         for(int i = 0 ; i < n ; i++){
-            set.add(nums[i]);
-         }
-
-        for(int el: set){
-            if(!set.contains(el - 1)){
-                int cnt = 1;
-                int x = el;
-                while(set.contains(x + 1)){
-                    cnt++;
-                    x = x + 1;
+         int maxLen = 0;
+        for(int i = 0 ;  i< nums.length; i++){
+            int sum = 0;
+            for(int j  = i ; j < nums.length; j++){
+                sum += nums[j];
+                if(sum == k){
+                    maxLen = Math.max(maxLen, j - i + 1);
                 }
-            longest = Math.max(longest, cnt);
             }
-        }
+        }    
 
-        return longest;
+        return maxLen;
     }
 }
 

@@ -44,3 +44,7 @@ S -> (n)
     }
 }
 
+/*
+If not asking indexes, sort the array, put low 0, high n-1, add and check if(more) reduce h--, if less increase l++
+ */
+

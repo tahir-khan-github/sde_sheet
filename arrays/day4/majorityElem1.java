@@ -9,7 +9,7 @@ T.C -> (n^2)
         int n = nums.length;
         for(int i = 0; i < n; i++){
             int cnt = 1;
-            for(int j = i + 1; j < n ; j++){
+            for(int j = 0; j < n ; j++){
                 if(nums[i] == nums[j]){
                     cnt++;
                 }

@@ -4,21 +4,22 @@ and count maxlen
 T.C -> o(n^2)
 S->o(n)
  */
-{
+class Solution {
     public int lengthOfLongestSubstring(String s) {
         if(s.length()==0) return 0;
         int n = s.length();
         int maxlen = 0;
-        for(int i = 0 ; i < n ; i++){
-            Set<Character> set = new HashSet<>();
-            for(int j = i ; j < n; j++){
-                if(set.contains(s.charAt(j))){
-                    maxlen = Math.max(maxlen, j - i);
-                    break;
+
+        for(int i = 0 ; i < s.length(); i++){
+                int fmap[] = new int[256];
+                for(int j = i; j < s.length(); j++){
+                    if(fmap[s.charAt(j)] == 1) break;
+                    maxlen = Math.max(maxlen, j - i + 1);
+                    fmap[s.charAt(j)] = 1;
                 }
-                set.add(s.charAt(j));
-            }
         }
+
+       
 
         return maxlen;
     }
@@ -28,28 +29,28 @@ S->o(n)
 optimal: twopointer, sliding window and fmap 
  */
 
-{
+class Solution {
     public int lengthOfLongestSubstring(String s) {
         if(s.length()==0) return 0;
         int n = s.length();
         int maxlen = 0;
-        int len = 0;
         int fmap[] = new int[256];
         Arrays.fill(fmap, -1);
-        int l = 0, r=0;
+        int l = 0, r = 0;
 
         while(r < n){
             if(fmap[s.charAt(r)] != -1){
                 if(fmap[s.charAt(r)] >= l){
-                    l = fmap[s.charAt(r)]  + 1;
+                    l = fmap[s.charAt(r)] + 1;
                 }
             }
-            len = r - l + 1;
-            maxlen = Math.max(maxlen, len);
+
+            maxlen = Math.max(maxlen, r - l + 1);
             fmap[s.charAt(r)] = r;
             r++;
         }
 
+       
 
         return maxlen;
     }
