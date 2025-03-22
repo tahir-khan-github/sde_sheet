@@ -5,19 +5,30 @@ S -> o(N)
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode temp1 = list1;
-        ListNode temp2 = list2;
+        ListNode dummyNode = new ListNode(-1);
+        ListNode temp = dummyNode;
+
         ArrayList<Integer> list = new ArrayList<>();
 
-        while(temp1 != null){
-            list.add(temp1.val);
-            temp1 = temp1.next;
+        ListNode t1= list1, t2 = list2;
+
+        while(t1 != null && t2 != null){
+            if(t1.val <= t2.val){
+               list.add(t1.val);
+                t1 = t1.next;
+            }else{
+                list.add(t2.val);
+                t2 = t2.next;
+            }
         }
-          while(temp2 != null){
-            list.add(temp2.val);
-            temp2 = temp2.next;
+        while(t1 != null){
+             list.add(t1.val);
+             t1 = t1.next;
         }
-        Collections.sort(list);
+          while(t2 != null){
+             list.add(t2.val);
+             t2 = t2.next;
+        }
         ListNode head = convert(list);
 
         return head;
@@ -34,7 +45,6 @@ class Solution {
         return head.next;
     }
 }
-
 /*
 Optimal: use sorted property and two pointer , move and compare and change direction
 T.C -> o(n1 + n2);
